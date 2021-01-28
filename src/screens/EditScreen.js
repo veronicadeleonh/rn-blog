@@ -6,12 +6,17 @@ import BlogPostForm from "../components/BlogPostFrom"
 const EditScreen = ({ navigation }) => {
 
     // console.log(navigation.getParam("id"))
+    const id = navigation.getParam("id")
+    const { state, editBlogPost } = useContext(Context) 
 
-    const { state } = useContext(Context) 
+    const blogPost = state.find(blogPost => blogPost.id === id)
 
-    const blogPost = state.find(blogPost => blogPost.id === navigation.getParam("id"))
-
-    return <BlogPostForm />
+    return <BlogPostForm
+                initialValues={{ title: blogPost.title, content: blogPost.content }} 
+                onSubmit={(title, content) => {
+                    editBlogPost(id, title, content, () => navigation.pop())
+                }}
+                />
 }
 
 const styles = StyleSheet.create({})

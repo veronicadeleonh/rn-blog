@@ -12,7 +12,6 @@ const CreateScreen = ({ navigation }) => {
                     addBlogPost(title, content, () => navigation.navigate("Index"))
                 }}
                 />
-    
 }
 
 const styles = StyleSheet.create({})
